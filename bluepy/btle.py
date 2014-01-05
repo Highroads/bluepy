@@ -241,7 +241,7 @@ if __name__ == '__main__':
     print UUID("f000aa11-0451-4000-b000-000000000000")
     print UUID("f000aa1204514000b000000000000000")
 
-    conn = Peripheral("BC:6A:29:AB:D3:7A")
+    conn = Peripheral("78:C5:E5:6E:E2:9B")
     try:
         for svc in conn.getServices():
             print str(svc), ": ----"

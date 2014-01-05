@@ -1,4 +1,4 @@
-BLUEZ_PATH=../bluez-5.4
+BLUEZ_PATH=/home/pi/bluez/bluez-5.13
 
 BLUEZ_SRCS  = lib/bluetooth.c lib/hci.c lib/sdp.c lib/uuid.c
 BLUEZ_SRCS += attrib/att.c attrib/gatt.c attrib/gattrib.c attrib/utils.c

@@ -367,7 +367,7 @@ static void char_desc_cb(guint8 status, const guint8 *pdu, guint16 plen,
 	att_data_list_free(list);
 
 	if (handle != 0xffff && handle < end)
-		gatt_find_info(attrib, handle + 1, end, char_desc_cb, NULL);
+		gatt_discover_char_desc(attrib, handle + 1, end, char_desc_cb, NULL);
 }
 
 static void char_read_cb(guint8 status, const guint8 *pdu, guint16 plen,
@@ -450,6 +450,7 @@ static gboolean channel_watcher(GIOChannel *chan, GIOCondition cond,
 
 static void cmd_connect(int argcp, char **argvp)
 {
+        GError *gerr=NULL;
 	if (conn_state != STATE_DISCONNECTED)
 		return;
 
@@ -471,7 +472,7 @@ static void cmd_connect(int argcp, char **argvp)
 
 	set_state(STATE_CONNECTING);
 	iochannel = gatt_connect(opt_src, opt_dst, opt_dst_type, opt_sec_level,
-						opt_psm, opt_mtu, connect_cb);
+						opt_psm, opt_mtu, connect_cb,&gerr);
 
 	if (iochannel == NULL)
 		set_state(STATE_DISCONNECTED);
@@ -615,7 +616,7 @@ static void cmd_char_desc(int argcp, char **argvp)
 	} else
 		end = 0xffff;
 
-	gatt_find_info(attrib, start, end, char_desc_cb, NULL);
+	gatt_discover_char_desc(attrib, start, end, char_desc_cb, NULL);
 }
 
 static void cmd_read_hnd(int argcp, char **argvp)

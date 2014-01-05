@@ -41,5 +41,11 @@ TODO list 19-Oct-2013:
 - Implement notifications (and with it SensorTag key press service)
 - better demo code and function documentation
 
+Update 5-Jan-2013
+- Now works with Bluez-5.13
+gatt_connect needs error variable
+gatt_find_info was renamed to gatt_discover_char_desc
+- Remove directory for Blue-5.4
+
 
 
